@@ -14,17 +14,17 @@ const User = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/signup", (req, res) => {
+router.get("/signup",isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", (req, res) => {
+router.post("/signup",isLoggedOut, (req, res) => {
 
   const { email, password } = req.body;
   console.log(req.body)
 
   if (!email || !password ) {
-    res.render("auth/signup", { errorMessage: "Please provide email and password" });
+    res.render("auth/signup",isLoggedOut, { errorMessage: "Please provide email and password" });
     return;
   }
 
@@ -113,7 +113,7 @@ router.post("/login", (req, res, next) => {
       }
 
       // If user is found based on the username, check if the in putted password matches the one saved in the database
-      bcrypt.compare(password, user.password).then((isSamePassword) => {
+      bcrypt.compare(password, user.passwordHash).then((isSamePassword) => {
         if (!isSamePassword) {
           return res.status(400).render("auth/login", {
             errorMessage: "Wrong credentials.",
