@@ -13,7 +13,7 @@ const eventSchema = new Schema(
     },
     dateAndTime: {
       type: Date,
-      required: true
+      
     },
     category: String,
     description: String,

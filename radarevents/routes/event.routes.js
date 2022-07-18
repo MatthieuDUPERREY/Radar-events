@@ -3,7 +3,7 @@ const router = require("express").Router();
 const checkIfLoggedIn = require('../middleware/isLoggedIn');
 
 
-router.get("/", (req, res, next) => {
+router.get("/events", (req, res, next) => {
   Event.find()
     .then((eventsFromDB) => {
       const data = {
@@ -32,13 +32,13 @@ router.get("/create", checkIfLoggedIn, (req, res, next) => {
 })
 
 
-router.post("/create", checkIfLoggedIn, (req, res, next) => {
+router.post("/events/create", checkIfLoggedIn, (req, res, next) => {
 
   const eventDetails = {
 
       title: req.body.title,
       location: req.body.location,
-      dateAndTime: req.body.Date,
+      dateAndTime: req.body.dateAndTime,
       category: req.body.category,
       description: req.body.description
   };
@@ -52,5 +52,23 @@ router.post("/create", checkIfLoggedIn, (req, res, next) => {
       next(error);
     })
 })
+
+
+router.get("/events/:eventId", (req, res, next) => {
+  const eventId = req.params.eventId;
+
+  Event.findById(eventId)
+    
+    .then( (eventDetails) => {
+      console.log(eventDetails)
+      res.render("events/events-details", eventDetails);
+    })
+    .catch( (error) => {
+      console.log("Error getting event details from DB", error);
+      next(error);
+    })
+
+})
+
 
 module.exports = router;
