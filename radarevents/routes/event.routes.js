@@ -70,5 +70,19 @@ router.get("/events/:eventId", (req, res, next) => {
 
 })
 
+router.get("/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
+  const eventDetails = req.params.eventId;
+
+  Event.findById(eventId)
+    .then( (eventDetails) => {
+      res.render("events/events-edit", eventDetails);
+    })
+    .catch( (error) => {
+      console.log("Error getting event details from DB", error);
+      next(error);
+    })
+
+});
+
 
 module.exports = router;
