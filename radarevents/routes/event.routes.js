@@ -52,3 +52,5 @@ router.post("/create", checkIfLoggedIn, (req, res, next) => {
       next(error);
     })
 })
+
+module.exports = router;
