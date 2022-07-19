@@ -1,0 +1,28 @@
+<h2>Edit the Event: {{title}}</h2>
+
+<form action="/events/{{_id}}/edit" method="POST">
+  <label> Title:
+    <input type="text" name="title" value="{{title}}" />
+  </label>
+
+  <label> Location:
+    <input type="text" name="location" value="{{location}}" />
+  </label>
+  
+  <label> Date and Time:
+    <input type="datetime-local" name="dateAndTime" value="{{dateAndTime}}" />
+  </label>
+
+  <label> Category:
+    <input type="text" name="category" value="{{category}}" />
+  </label>
+
+  <label> Description:
+    <textarea name="description" cols="30" rows="4">
+        {{description}}
+    </textarea>
+  </label>
+
+  
+  <button>Save changes</button>
+</form>

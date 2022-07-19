@@ -70,12 +70,23 @@ router.get("/events/:eventId", (req, res, next) => {
 
 })
 
-router.get("/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
-  const eventDetails = req.params.eventId;
+router.post("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
+  const eventId = req.params.eventId;
 
-  Event.findById(eventId)
+  const newEventDetails = {
+
+    title: req.body.title,
+    location: req.body.location,
+    dateAndTime: req.body.dateAndTime,
+    category: req.body.category,
+    description: req.body.description
+};
+
+  Event.findByIdAndUpdate(eventId, newEventDetails, {new: true})
+
     .then( (eventDetails) => {
-      res.render("events/events-edit", eventDetails);
+      
+      res.redirect("/events");
     })
     .catch( (error) => {
       console.log("Error getting event details from DB", error);
