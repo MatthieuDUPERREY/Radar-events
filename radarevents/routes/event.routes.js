@@ -1,6 +1,7 @@
 const Event = require('../models/Event.model.js');
 const router = require("express").Router();
 const checkIfLoggedIn = require('../middleware/isLoggedIn');
+const { deleteOne } = require('../models/Event.model.js');
 
 
 router.get("/events", (req, res, next) => {
@@ -61,7 +62,7 @@ router.get("/events/:eventId", (req, res, next) => {
     
     .then( (eventDetails) => {
       console.log(eventDetails)
-      res.render("events/events-details", eventDetails);
+      res.render("/events/events-details", eventDetails);
     })
     .catch( (error) => {
       console.log("Error getting event details from DB", error);
@@ -94,6 +95,21 @@ router.post("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
     })
 
 });
+
+router.get("/events/:eventId/delete", checkIfLoggedIn, (req, res, next) => {
+  const eventId = req.params.eventId;
+  console.log(eventId);
+
+  Event.findByIdAndRemove(eventId)
+    .then( () => {
+      res.redirect('/events');
+    })
+    .catch( (error) => {
+      console.log("Error deleting event from DB", error);
+      next(error);
+    })
+
+})
 
 
 module.exports = router;
