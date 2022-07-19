@@ -1,16 +1,28 @@
 <section class="event-details">
-    <h2>{{title}}</h2>
+    <h2>{{eventDetails.title}}</h2>
     <p>
-        Event: {{event.title}} <br />
-        location: {{event.location}} <br />
-        dateAndTime: {{event.dateAndTime}} <br />
-        category: {{event.category}} <br />
-        
+
+        location: {{eventDetails.location}} <br />
+        {{eventDetails.dateAndTime}} <br />
+        category: {{eventDetails.category}} <br />
+
     </p>
+    {{eventDetails._id}}
     <p>
         <strong>Description:</strong>
-        {{event.description}}
+        {{eventDetails.description}}
     </p>
+
+    <form action="/events/{{eventDetails._id}}/edit" method="GET">
+        <button type="submit">Edit</button>
+    </form>
+
+    <form action="/events/{{eventDetails._id}}/delete" method="post">
+        <button>Delete</button>
+    </form>
+
+
+
 </section>
 
-<a href="/events">Back</a> 
+<a href="/events">Back</a>

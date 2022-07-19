@@ -6,7 +6,7 @@ const checkIfLoggedIn = require('../middleware/isLoggedIn');
 
 router.get("/events", (req, res, next) => {
   Event.find()
-    // .populate("title")
+  
     .then((eventsFromDB) => {
       const data = {
         eventsArr: eventsFromDB
@@ -62,14 +62,28 @@ router.get("/events/:eventId", (req, res, next) => {
   Event.findById(eventId)
 
     .then( (eventDetails) => {
-      console.log(eventDetails)
-      res.render("events/events-details", eventDetails);
+      
+      res.render("events/events-details", {eventDetails});
     })
     .catch( (error) => {
       console.log("Error getting event details from DB", error);
       next(error);
     })
 
+})
+
+router.get("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
+  const eventId = req.params.eventId;
+  
+  Event.findById(eventId)
+  .then( (newEventDetails) => {
+
+    res.render("events/events-edit", newEventDetails);
+  })
+  .catch( (error) => {
+    console.log("Error getting event details from DB", error);
+    next(error);
+  })
 })
 
 router.post("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
@@ -86,7 +100,7 @@ router.post("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
 
   Event.findByIdAndUpdate(eventId, newEventDetails, {new: true})
 
-    .then( (eventDetails) => {
+    .then( (newEventDetails) => {
 
       res.redirect("/events");
     })
@@ -97,7 +111,7 @@ router.post("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
 
 });
 
-router.get("/events/:eventId/delete", checkIfLoggedIn, (req, res, next) => {
+router.post("/events/:eventId/delete", checkIfLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
   console.log(eventId);
 
