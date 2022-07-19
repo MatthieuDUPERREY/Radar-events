@@ -11,11 +11,18 @@
   <body>
 
     <nav>
-         
+         {{!--
+/*{{#if session.user}}
+<form id="logout-form" action="/logout" method="POST">
+               <button>Logout</button>
+            </form>
+         {{/if}}*/--}}
+
          <a href="/events">Events</a> |                 
 
-         <a href="/signup">Register</a> |
+         <a href="/auth/signup">Register</a> |
          <a href="/auth/login">Login</a> |
+
          <a href="/auth/logout">Logout</a> |
          
 

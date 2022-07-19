@@ -23,6 +23,12 @@ const projectName = "radarevents";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 
+// expose session data for handlebars
+app.use((req, res, next)=>{
+    res.locals.session = req.session;
+    next();
+});
+
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
 app.use("/", index);
