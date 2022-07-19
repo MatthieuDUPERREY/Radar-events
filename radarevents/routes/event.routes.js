@@ -60,7 +60,7 @@ router.get("/events/:eventId", (req, res, next) => {
   const eventId = req.params.eventId;
 
   Event.findById(eventId)
-    
+
     .then( (eventDetails) => {
       console.log(eventDetails)
       res.render("events/events-details", eventDetails);
@@ -87,7 +87,7 @@ router.post("/events/:eventId/edit", checkIfLoggedIn, (req, res, next) => {
   Event.findByIdAndUpdate(eventId, newEventDetails, {new: true})
 
     .then( (eventDetails) => {
-      
+
       res.redirect("/events");
     })
     .catch( (error) => {
