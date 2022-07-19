@@ -1,11 +1,12 @@
 const Event = require('../models/Event.model.js');
 const router = require("express").Router();
 const checkIfLoggedIn = require('../middleware/isLoggedIn');
-const { deleteOne } = require('../models/Event.model.js');
+
 
 
 router.get("/events", (req, res, next) => {
   Event.find()
+    // .populate("title")
     .then((eventsFromDB) => {
       const data = {
         eventsArr: eventsFromDB
@@ -62,7 +63,7 @@ router.get("/events/:eventId", (req, res, next) => {
     
     .then( (eventDetails) => {
       console.log(eventDetails)
-      res.render("/events/events-details", eventDetails);
+      res.render("events/events-details", eventDetails);
     })
     .catch( (error) => {
       console.log("Error getting event details from DB", error);
