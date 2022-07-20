@@ -7,10 +7,8 @@
     {{this.dateAndTime}} <br />
     {{this.category}} <br />
     <a href="/events/{{this._id}}">More details</a> |
-    {{!-- <a href="/events/{{this._id}}/edit">Edit</a> | --}}
   </p>
-  <form action="/events/{{this._id}}/delete" method="POST">
-    <button>Delete</button>
-  </form>
+
+  <a href="/events/create">Add Event</a>
 </section>
 {{/each}}

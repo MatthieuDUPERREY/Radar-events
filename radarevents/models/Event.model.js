@@ -13,11 +13,10 @@ const eventSchema = new Schema(
     },
     dateAndTime: {
       type: Date,
-      
     },
     category: String,
     description: String,
-    },
+  },
   {
     timestamps: true,
   }
