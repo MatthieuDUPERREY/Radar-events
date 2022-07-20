@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>{{appTitle}}</title>
+  <title>RadarEvents</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
 
-  <nav>
-    <a href="/events">Events</a>
+  <nav class="links">
+    <a href="/events">Events</a> <br>
+    <a href="./views/about-us.hbs">About us</a>
 
     {{#if session.user}}
     <a href="/auth/logout">Logout</a>

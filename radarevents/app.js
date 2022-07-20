@@ -21,7 +21,7 @@ require("./config")(app);
 const capitalized = require("./utils/capitalized");
 const projectName = "radarevents";
 
-app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+/* app.locals.appTitle = `${capitalized(projectName)}`; */
 
 // expose session data for handlebars
 app.use((req, res, next)=>{
