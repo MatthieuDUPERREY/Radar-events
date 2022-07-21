@@ -20,7 +20,7 @@ h1 {
 
 
 div {
-  border: solid 1px #000;
+ 
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -35,7 +35,4 @@ div {
 
 }
 
-.radar-events-home {
-  font-size: 32px;
-  color: black;
-}
+
