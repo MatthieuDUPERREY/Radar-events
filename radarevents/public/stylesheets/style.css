@@ -5,18 +5,18 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #ffffff;
-  border: solid 2px black;
 }
 
 a {
   color: #787878;
   font-family: 'Special Elite', cursive;
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
-h1 {
-  color: 15px;
+.title {
+  color: 18px;
   font-family: 'Special Elite', cursive;
+ 
 }
 
 
@@ -56,6 +56,20 @@ form {
 }
 
 form > button {
-  padding: 1em 2.5em;
+  padding: 0.3em 1.8em;
   max-width: fit-content;
+}
+.radarevents{
+  color: #787878;
+  font-family: 'Special Elite', cursive;
+  font-size: 3rem;
+}
+
+p{
+  font-size: 18px;
+  display:flex;  
+}
+
+h1{
+  font-family: 'Special Elite', cursive;
 }
