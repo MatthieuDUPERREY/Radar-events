@@ -3,13 +3,38 @@ const router = require("express").Router();
 const checkIfLoggedIn = require('../middleware/isLoggedIn');
 
 
+// TESTING
+/*router.get("/events", (req, res, next) => {
+  Event.find()
+    .then((eventsFromDB) => {
+      const newdata = eventsFromDB.map((elm) => {
+        if(elm.dateAndTime) { 
+          const datadate = elm.dateAndTime.toDateString()
+          console.log({...elm, dateAndTime: datadate})
+          return {...elm, dateAndTime: datadate}          
+     }
+    return elm
+    }) 
+
+      const data = {
+        eventsArr: newdata
+      };
+      //console.log(newdata)    
+      res.render("events/events-list", data);
+    })
+    .catch((error) => {
+      console.log("Error getting data from DB", error);
+      next(error);
+    })
+});
+*/
 
 router.get("/events", (req, res, next) => {
   Event.find()
     .then((eventsFromDB) => {
       const data = {
         eventsArr: eventsFromDB
-      };
+      };  
       res.render("events/events-list", data);
     })
     .catch((error) => {
