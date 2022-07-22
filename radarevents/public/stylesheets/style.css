@@ -4,7 +4,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: #f8e7cc;
 }
 
 a {
@@ -82,7 +82,7 @@ h1 {
   width: 60vw;
   margin: auto;
   margin-top: 15vh;
-  font-size: 22px;  
+  font-size: 22px;
 }
 
 .agenda p {
