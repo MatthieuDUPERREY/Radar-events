@@ -6,9 +6,19 @@ const checkIfLoggedIn = require('../middleware/isLoggedIn');
 router.get("/events", (req, res, next) => {
   Event.find()
     .then((eventsFromDB) => {
+
+      const newdata = eventsFromDB.map((elm) => {
+        if (elm.dateAndTime !== null) {
+          const datadate = elm.dateAndTime.toDateString();
+          elm._doc.dateAndTime = datadate;
+          return elm;
+        }
+        return elm;
+      });
       const data = {
-        eventsArr: eventsFromDB
-      };  
+        eventsArr: newdata,
+      };
+
       res.render("events/events-list", data);
     })
     .catch((error) => {
@@ -52,6 +62,7 @@ router.get("/events/:eventId", (req, res, next) => {
     .then( (eventDetails) => {
       res.render("events/events-details", {eventDetails});
     })
+
     .catch( (error) => {
       console.log("Error getting event details from DB", error);
       next(error);

@@ -88,10 +88,12 @@ h1 {
 .agenda p {
   font-size: 21px;
 }
-.agenda h2{
+
+.agenda h2 {
   font-family: 'Special Elite', cursive;
 }
-.events-list{
+
+.events-list {
   border: 1px black;
   display: flex;
   justify-content: space-between;
@@ -105,14 +107,20 @@ h1 {
 
 .event-create a {
   font-size: 24px;
- /*  border: solid black;
-  border-radius: 5%;
-  box-shadow: 5px 5px 15px 5px #FFFFFF; */
+
 }
 
 
 .card {
+  display: flex;
   background-color: #faec70;
   box-shadow: 5px 5px 15px 5px #898989;
   border-bottom-right-radius: 45px 45px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.card-text.box {
+  justify-content: center;
 }
