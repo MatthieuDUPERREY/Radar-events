@@ -17,7 +17,7 @@ a {
 .title {
   color: 18px;
   font-family: 'Special Elite', cursive;
- 
+
 }
 
 
@@ -56,34 +56,41 @@ form {
   padding: 10px;
 }
 
-form > button {
+form>button {
   padding: 0.3em 1.8em;
   max-width: fit-content;
 }
-.radarevents{
+
+.radarevents {
   color: #787878;
   font-family: 'Special Elite', cursive;
   font-size: 3rem;
 }
 
-p{
+p {
   font-size: 18px;
-  display:flex;
-  
-  margin-top: 50px;  
+  display: flex;
+
+  margin-top: 50px;
 }
 
-h1{
+h1 {
   font-family: 'Special Elite', cursive;
 }
 
-.agenda{  
+.agenda {
   width: 60vw;
-  margin:auto;
+  margin: auto;
   margin-top: 15vh;
-  font-size: 24px;
+  font-size: 22px;  
 }
-.agenda p{
-  font-size: 21px;
 
+.agenda p {
+  font-size: 21px;
+}
+.agenda h2{
+  font-family: 'Special Elite', cursive;
+}
+.events-list{
+  border: 1px black;
 }
