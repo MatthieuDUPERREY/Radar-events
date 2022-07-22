@@ -3,32 +3,6 @@ const router = require("express").Router();
 const checkIfLoggedIn = require('../middleware/isLoggedIn');
 
 
-// TESTING
-/*router.get("/events", (req, res, next) => {
-  Event.find()
-    .then((eventsFromDB) => {
-      const newdata = eventsFromDB.map((elm) => {
-        if(elm.dateAndTime) { 
-          const datadate = elm.dateAndTime.toDateString()
-          console.log({...elm, dateAndTime: datadate})
-          return {...elm, dateAndTime: datadate}          
-     }
-    return elm
-    }) 
-
-      const data = {
-        eventsArr: newdata
-      };
-      //console.log(newdata)    
-      res.render("events/events-list", data);
-    })
-    .catch((error) => {
-      console.log("Error getting data from DB", error);
-      next(error);
-    })
-});
-*/
-
 router.get("/events", (req, res, next) => {
   Event.find()
     .then((eventsFromDB) => {
@@ -47,6 +21,9 @@ router.get("/events/create", checkIfLoggedIn, (req, res, next) => {
       res.render("events/event-create");
 })
 
+router.get("/events/create", checkIfLoggedIn, (req, res, next) => {
+      res.render("events/event-create");
+})
 
 router.post("/events/create", checkIfLoggedIn, (req, res, next) => {
 
@@ -67,7 +44,6 @@ router.post("/events/create", checkIfLoggedIn, (req, res, next) => {
       next(error);
     })
 })
-
 
 router.get("/events/:eventId", (req, res, next) => {
   const eventId = req.params.eventId;
@@ -134,6 +110,5 @@ router.post("/events/:eventId/delete", checkIfLoggedIn, (req, res, next) => {
     })
 
 })
-
 
 module.exports = router;

@@ -93,6 +93,8 @@ h1 {
 }
 .events-list{
   border: 1px black;
+  display: flex;
+  justify-content: space-between;
 }
 
 
