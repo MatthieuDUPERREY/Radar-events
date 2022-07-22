@@ -2,11 +2,11 @@
 
 <form action="/events/{{this._id}}/edit" method="POST">
   <label> Title:
-    <input type="text" name="title" value="{{title}}" />
+    <input type="text" name="title" value="{{title}}" required/>
   </label>
 
   <label> Location:
-    <input type="text" name="location" value="{{location}}" />
+    <input type="text" name="location" value="{{location}}" required/>
   </label>
 
   <label> Date and Time:
