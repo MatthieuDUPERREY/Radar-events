@@ -109,3 +109,10 @@ h1 {
   border-radius: 5%;
   box-shadow: 5px 5px 15px 5px #FFFFFF; */
 }
+
+
+.card {
+  background-color: #faec70;
+  box-shadow: 5px 5px 15px 5px #898989;
+  border-bottom-right-radius: 45px 45px;
+}
